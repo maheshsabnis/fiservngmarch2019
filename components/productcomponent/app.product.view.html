@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="form-group">
+    <label for="ProductId">Product Id</label>
+    <input type="text" class="form-control" [(ngModel)]="product.ProductId">
+  </div>
+  <div class="form-group">
+    <label for="ProductName">Product Name</label>
+    <input type="text" class="form-control" [(ngModel)]="product.ProductName">
+  </div>
+  <div class="form-group">
+    <label for="Price">Price</label>
+    <input type="text" class="form-control" [(ngModel)]="product.Price">
+  </div>
+  <div class="form-group">
+    <label for="CategoryName">CategoryName</label>
+    <select class="form-control" [(ngModel)]="product.CategoryName">
+      <option *ngFor="let cat of categories" value="{{cat}}">{{cat}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Manufacturer">Manufacturer</label>
+    <select class="form-control" [(ngModel)]="product.Manufacturer">
+      <option *ngFor="let man of manufacturers" value="{{man}}">{{man}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <input type="button" value="New" class="btn btn-default" (click)="clear()">
+    <input type="button" value="Save" class="btn btn-success" (click)="save()">
+  </div>
+</div>
+<hr />
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td *ngFor="let c of tableColumns">{{c}}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products" (click)="getSelectedProduct(p)">
+        <td *ngFor="let c of tableColumns">{{p[c]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
